@@ -33,28 +33,26 @@ int main(int argc, int argv[])
 
 	vector<string> vertexName;
 	typedef vector<bool> bvt;
-	vector<vector<bool>> matrix(v, bvt(v, 0));
-	map<string, int> mapVertex;
+	vector<vector<bool>> matrix(v, bvt(v, 0));// khởi tạo ma trận kiểu bool có giá ban đầu bằng 0
+	map<string, int> mapVertex;// lồng vector ký tự vào matrix bằng map
 	string str1, str2;
 	for (int i = 0; i < v; i++)
 	{
 		cin >> str1;
-		vertexName.push_back(str1);
-		mapVertex[str1] = i;
+		vertexName.push_back(str1);// nhập đỉnh cho ma trận 
+		mapVertex[str1] = i;// gán số thứ tự vị trí cho đỉnh tên 
 	}
-
 	for (int i = 0; i < e; i++)
 	{
-		cin >> str1 >> str2;
-		matrix[mapVertex[str1]][mapVertex[str2]] = 1;
+		cin >> str1 >> str2;// nhập 2 đỉnh nối với nhau
+		matrix[mapVertex[str1]][mapVertex[str2]] = 1;// đồ thị hữu hướng nên tại vị trí matrix[str1][str2]=1
 	}
-
 	for (int i = 0; i < n; i++)
 	{
 		cin >> key;
 		switch (key)
 		{
-		case 1:
+		case 1://xét 2 đỉnh có kề nhau ko
 		{
 			cin >> str1 >> str2;
 			if (matrix[mapVertex[str1]][mapVertex[str2]] == 1)
@@ -63,7 +61,7 @@ int main(int argc, int argv[])
 				cout << "FALSE";
 			break;
 		}
-		default:
+		default:// xuất các đỉnh kề với đỉnh đang xét
 		{
 			bool flag = 0;
 			cin >> str1;
